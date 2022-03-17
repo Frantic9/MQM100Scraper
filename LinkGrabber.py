@@ -17,7 +17,7 @@ def render_page(url):
     return r
 
 
-for x in range(3):
+for x in range(100):
     goog_search = "https://randomrepo.com/"
 
     r  = render_page(goog_search)
