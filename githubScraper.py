@@ -111,7 +111,7 @@ def excel_format(data_list):
 def language_format(language):
     temp_string = ""
     for char in language:
-        if char.isalpha() or char == ' ' or char == '+':
+        if char.isalpha() or char == ' ' or char == '+' or char == '#':
             temp_string += char
     return temp_string.strip()
 
