@@ -92,7 +92,10 @@ def excel_plotter(data_list, url):
         col = 1
         for x in data:
             worksheet.write(row, 0, url[row - 1])
-            worksheet.write(row, col, x)
+            if not x[0].isalpha():
+                worksheet.write_number(row, col, int(x))
+            else:
+                worksheet.write(row, col, x)
             col += 1
         row += 1
     
