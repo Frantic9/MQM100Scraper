@@ -1,10 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
-import lxml
 import time
 from selenium import webdriver
 
 f = open("Links.txt", "a")
+print("How many Links you want?")
+size = input()
+len = int(size)
+ref_array = []
 
 
 
@@ -17,15 +20,28 @@ def render_page(url):
     return r
 
 
-for x in range(100):
+for x in range(len):
     goog_search = "https://randomrepo.com/"
 
     r  = render_page(goog_search)
 
-
     soup = BeautifulSoup(r, "html.parser")
     soup = soup.find("div", {"class": "col-12 text-center"}).find("a")
-    f.write(soup.get("href"))
-    f.write("\n")
+    ref = soup.get("href")
+    ref_array.append(ref)
 
+for x in range(len):
+    for j in range(x+1,len):
+        if(ref_array[x] == ref_array[j]):
+            goog_search = "https://randomrepo.com/"
+            r  = render_page(goog_search)
+            soup = BeautifulSoup(r, "html.parser")
+            soup = soup.find("div", {"class": "col-12 text-center"}).find("a")
+            ref = soup.get("href")
+            ref_array[j] = ref
+
+
+for x in range(len):
+    f.write(ref_array[x])
+    f.write("\n")
 f.close()
