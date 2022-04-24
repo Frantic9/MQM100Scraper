@@ -8,6 +8,8 @@ Scraper to find data for an MQM 100 Project
 ```bash
 pip install -r requirements.txt
 ```
+Also requires selenium for your chrome version.
+Put selenium executable in C:\Program Files (x86)\
 
 ### Run the LinkGrabber.py script
 
